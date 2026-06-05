@@ -58,28 +58,45 @@ public static class BookEndpoints
         });
 
         // PUT uppdaterar en bok
-        /* app.MapPut("/book/{id}", async (AppDbContext db, int id) =>
+        app.MapPut("/book/{id}", async (AppDbContext db, int id, Book book) =>
         {
             try
             {
                 // Om det inte finns en bok med det angivna id:t
-                if (!await db.Books.AnyAsync(e => e.Id == id))
-                {
-                    return Results.NotFound();
-                }
+                // AnyAsync returnerar ett boolean värde medan FindAsync returnerar ett helt objekt
+                if (!await db.Books.AnyAsync(e => e.Id == id)) return Results.NotFound();
+
+                //Sätter bokens Id från URL:en så att EF Core vet vilken bok som ska uppdateras. Kommer annars skapa en ny resurs
+                book.Id = id;
+
+                db.Books.Update(book);
+                await db.SaveChangesAsync();
+                return Results.NoContent(); //204 
 
             }
             catch (Exception ex)
             {
                 return Results.Problem(ex.Message);
             }
-        }); */
+        });
 
         // DELETE ta bort en bok
-        /* app.MapDelete("/{id}", async (AppDbContext db, int id) =>
+        app.MapDelete("/book/{id}", async (AppDbContext db, int id) =>
         {
-            try{}
-            catch (){}
-        }); */
+            try
+            {
+                var book = await db.Books.FindAsync(id);
+
+                if (book is null) return Results.NotFound();
+
+                db.Books.Remove(book);
+                await db.SaveChangesAsync();
+                return Results.NoContent(); //204 
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        });
     }
 }
