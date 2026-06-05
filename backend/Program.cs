@@ -1,7 +1,7 @@
 using backend.Data;
 
-//importerar alla klasser från models mappen. Utan 'using' behöver man skriva ut hela sökvägen
-using backend.Models;
+using backend.Routes;
+
 using Microsoft.EntityFrameworkCore;
 
 //creates a web application with default configuration
@@ -15,22 +15,6 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //Builds the configured WebApplication instance
 var app = builder.Build();
 
-// GET hämtar alla böcker
-app.MapGet("/", async (AppDbContext db) =>
-    await db.Books.ToListAsync()
-);
-
-// POST skapa en bok
-app.MapPost("/", async (AppDbContext db, Book book) =>
-{
-    db.Books.Add(book);
-    await db.SaveChangesAsync();
-    return Results.Created($"/{book.Id}", book);
-});
-
-// DELETE ta bort en bok
-app.MapDelete("/{id}", async (AppDbContext db, int id) =>
-{
-});
+BookEndpoints.MapBookEndpoints(app);
 
 app.Run();
