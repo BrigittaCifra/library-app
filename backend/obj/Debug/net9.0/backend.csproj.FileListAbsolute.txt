@@ -127,3 +127,4 @@ C:\Users\Brigitta\Documents\Jobb\Frontend\Tester\library-app\backend\bin\Debug\n
 C:\Users\Brigitta\Documents\Jobb\Frontend\Tester\library-app\backend\bin\Debug\net9.0\tr\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Brigitta\Documents\Jobb\Frontend\Tester\library-app\backend\bin\Debug\net9.0\zh-Hans\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
 C:\Users\Brigitta\Documents\Jobb\Frontend\Tester\library-app\backend\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.MSBuild.BuildHost.resources.dll
+C:\Users\Brigitta\Documents\Jobb\Frontend\Tester\library-app\backend\obj\Debug\net9.0\backend.sourcelink.json

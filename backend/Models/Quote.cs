@@ -12,9 +12,7 @@ public class Quote
     public required string Content { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    // Koppling till Book
-    public int BookId { get; set; }
-    public Book Book { get; set; } = null!;
-
-    public ICollection<UserQuote> UserQuotes { get; set; } = new List<UserQuote>();
+    // Koppling till användare
+    public int UserId { get; set; }
+    public User User { get; set; } = null!;
 }
