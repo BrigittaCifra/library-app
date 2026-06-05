@@ -14,5 +14,7 @@ public class Book
     public DateTime PublishedDate { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    public ICollection<Quote> Quotes { get; set; } = new List<Quote>();
+    // Koppling till användare
+    public int UserId { get; set; }
+    public User User { get; set; } = null!;
 }

@@ -19,15 +19,7 @@ public class AppDbContext : DbContext
     public DbSet<Book> Books { get; set; } = null!;
     public DbSet<Quote> Quotes { get; set; } = null!;
     public DbSet<User> Users { get; set; } = null!;
-    public DbSet<UserQuote> UserQuotes { get; set; } = null!;
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
-    {
-        modelBuilder.Entity<UserQuote>()
-            //.HasKey tallar om för EF vilken/vilka kolumner som är primärnyckeln
-            //new { uq.UserId, uq.QuoteId } kommer att ta tabellens två foreign keys (user id + quote id) och gör de till UserQuotes primära nyckel
-            .HasKey(e => new { e.UserId, e.QuoteId });
-    }
 }
 
 //migrations är c# filer som kör SQL

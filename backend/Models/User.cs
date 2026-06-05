@@ -14,6 +14,7 @@ public class User
     public required string Password { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    // Koppling till UserQuote
-    public ICollection<UserQuote> UserQuotes { get; set; } = new List<UserQuote>();
+    // Koppling citat och böcker
+    public ICollection<Quote> Quotes { get; set; } = new List<Quote>();
+    public ICollection<Book> Books { get; set; } = new List<Book>();
 }
