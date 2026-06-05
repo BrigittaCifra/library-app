@@ -1,0 +1,4 @@
+- [ ] ``GET`` lista över alla böcker.
+- [ ] ``POST`` lägga till en ny bok.
+- [ ] ``PUT`` redigera detaljerna i boken.
+- [ ] ``DELETE`` ta bort boken.
