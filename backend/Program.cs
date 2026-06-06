@@ -36,5 +36,6 @@ app.UseCors(MyAllowSpecificOrigins);
 //endpoints
 BookEndpoints.MapBookEndpoints(app);
 QuotesEndpoints.MapQuoteEndpoints(app);
+UserEndpoints.MapUserEndpoints(app);
 
 app.Run();
