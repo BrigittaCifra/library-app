@@ -15,6 +15,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 //Builds the configured WebApplication instance
 var app = builder.Build();
 
+//endpoints
 BookEndpoints.MapBookEndpoints(app);
+QuotesEndpoints.MapQuoteEndpoints(app);
 
 app.Run();
