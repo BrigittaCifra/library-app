@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+
+//Service
+import { BookService } from '../../services/book.service';
+
+//Model
+import { BookModel } from '../../models/book.model';
 
 //Komponenter
 import { BookCardComponent } from '../../components/bookCard/book-card.component';
@@ -9,4 +15,20 @@ import { BookCardComponent } from '../../components/bookCard/book-card.component
   templateUrl: `./book-page.html`,
   styles: ``,
 })
-export class BookPage { }
+export class BookPage {
+  //injekterar bok servicen
+  private bookService = inject(BookService);
+
+  //<BookModel[]> typen är en lista av böcker
+  //([]) tom lista som startvärde
+  books = signal<BookModel[]>([]);
+
+  //ngOnInit körs när komponenten laddas
+  ngOnInit() {
+    //HttpClient returnerar en Observable istället för en promise därför används .subscribe()
+    //.subscribe() returnerar en callback funktion
+    this.bookService.getBook().subscribe(data => {
+      this.books.set(data);
+    });
+  }
+}

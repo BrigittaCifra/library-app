@@ -10,7 +10,7 @@ import { BookModel } from '../models/book.model';
 })
 export class BookService {
   //inject är det moderna sättet att injectera på? Injecterar Angulars inbyggda HTTP klient. Utan den kan man inte skicka HTTP req
-  //private innebär att den kan bara användas i BookService klassen. Komponenter som använder servicen kan inte komma åt http direkt, bara metoderna som getBooks()
+  //private innebär att egenskapen kan bara användas i BookService klassen. Komponenter som använder servicen kan inte komma åt http direkt, bara metoderna som getBooks()
   private http = inject(HttpClient);
 
   //http://localhost:5222/book
