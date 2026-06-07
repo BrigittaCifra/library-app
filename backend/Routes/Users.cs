@@ -26,6 +26,10 @@ public static class UserEndpoints
             }
         });
 
+        //GET -
+
+        //Bearer i header (login post)
+
         //TBA: 
         //Inloggning
         //Auth

@@ -1,12 +1,15 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
+import { LayoutComponent } from './components/layout/layout.component';
+import { BookCardComponent } from './components/bookCard/book-card.component'
+
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, LayoutComponent, BookCardComponent],
   template: `
-    <h1>Hello bitch</h1>
-
+    <app-layout/>
+    <app-book-card/>
     <router-outlet />
   `,
   styles: [],
