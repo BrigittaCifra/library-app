@@ -31,5 +31,12 @@ export class BookPage {
     this.bookService.getBook().subscribe(data => {
       this.books.set(data);
     });
+
   }
+
+  onBookDeleted(id: number): void {
+    // Filtrerar bort den raderade boken från listan
+    this.books.update(books => books.filter(b => b.id !== id));
+  }
+
 }
