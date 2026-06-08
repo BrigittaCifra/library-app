@@ -1,4 +1,5 @@
 import { Component, inject, signal } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 //Service
 import { BookService } from '../../services/book.service';
@@ -11,7 +12,7 @@ import { BookCardComponent } from '../../components/bookCard/book-card.component
 
 @Component({
   selector: 'app-book-page',
-  imports: [BookCardComponent],
+  imports: [BookCardComponent, RouterLink],
   templateUrl: `./book-page.html`,
   styles: ``,
 })

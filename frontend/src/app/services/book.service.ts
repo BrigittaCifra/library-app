@@ -18,11 +18,27 @@ export class BookService {
 
   //Hämtar alla böcker
   getBook() {
-    //<BookModel[]> talar om för TypeScript vilken typ svaret ska vara
+    //<BookModel[]> talar om för TypeScript vilken typ svaret ska vara. [] returnerar en lista
     return this.http.get<BookModel[]>(this.url);
   }
 
+  //Hämtar en book baserat på id
   getBookByID(id: number) {
     return this.http.get<BookModel>(`${this.url}/{id}`);
+  }
+
+  //lägger till en bok
+  addBook(book: BookModel) {
+    return this.http.post<BookModel>(this.url, book);
+  }
+
+  //uppdaterar en bok
+  updateBook(book: BookModel) {
+    return this.http.put<void>(`${this.url}/{book.id}`, book);
+  }
+
+  //tar bort en bok
+  deleteBook(id: number) {
+    return this.http.delete<void>(`${this.url}/{book.id}`);
   }
 }

@@ -1,6 +1,9 @@
-<app-book-card />
+<!-- Länk till formuläret -->
+<a class="btn btn-primary" role="button" routerLink="book/new">Lägg till ny bok</a>
+
 <div>
     @for (book of books(); track book.id) {
-    <p>{{ book.title }}</p>
+    <!-- Kort komponent -->
+    <app-book-card [book]="book" />
     }
 </div>
