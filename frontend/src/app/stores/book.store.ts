@@ -18,7 +18,7 @@ const defaultState: BookState = {
     error: null
 }
 
-@Injectable()
+@Injectable({ providedIn: 'root' })
 export class BookStore {
     //dependency injection. Moderna sättet att hämta saker på istället för att använda konstruktorn
     //inject hämtar instansen av BookService

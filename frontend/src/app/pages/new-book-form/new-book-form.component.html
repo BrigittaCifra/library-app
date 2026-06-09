@@ -1,0 +1,15 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()" action="">
+    <input type="hidden" formControlName='id'>
+    <div class="mb-3">
+        <label for="title" class="form-label">Titel</label>
+        <input formControlName="title" type="text" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Författare</label>
+        <input formControlName="author" type="text" class="form-control" id="exampleInputPassword1">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+    </div>
+</form>

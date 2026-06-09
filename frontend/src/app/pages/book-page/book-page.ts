@@ -8,7 +8,6 @@ import { BookStore } from '../../stores/book.store';
 @Component({
   selector: 'app-book-page',
   imports: [BookCardComponent, RouterLink],
-  providers: [BookStore],
   templateUrl: `./book-page.html`,
   styles: ``,
 })

@@ -4,7 +4,7 @@ import { Routes } from '@angular/router';
 import { BookPage } from './pages/book-page/book-page';
 import { QuotePage } from './pages/quote-page/quote-page';
 import { LoginPage } from './pages/login-page/login-page';
-import { BookForm } from './pages/book-form/book-form.component';
+import { BookForm } from './pages/new-book-form/new-book-form.component';
 import { PageNotFound } from './pages/page-not-found/page-not-found';
 
 export const routes: Routes = [
