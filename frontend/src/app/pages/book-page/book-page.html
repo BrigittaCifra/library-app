@@ -1,10 +1,18 @@
+<!--Hanterar loading staten-->
+@if(loading()){
+<p>Laddar . . .</p>
+}
+
 <!-- Länk till formuläret -->
 <a class="btn btn-primary" role="button" routerLink="book/new">Lägg till ny bok</a>
 
-<div>
-    @for (book of books(); track book.id) {
-    <!-- Kort komponent -->
-    <!-- (bookDeleted) lyssnar på event som kommer från -->
-    <app-book-card [book]="book" (bookDeleted)="onBookDeleted($event)" />
-    }
+<div class="row">
+    <div class="col">
+        @for (book of book(); track book.id) {
+        <!-- Kort komponent -->
+        <app-book-card [book]="book" />
+        <!-- (bookDeleted) lyssnar på event som kommer från -->
+        <!--(bookDeleted)="onBookDeleted($event)"-->
+        }
+    </div>
 </div>
