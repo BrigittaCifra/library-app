@@ -6,9 +6,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 @Component({
   selector: 'app-root',
   imports: [LayoutComponent],
-  template: `
-    <app-layout/>
-  `,
+  template: `<app-layout/>`,
   styles: [],
 })
 export class App {
