@@ -1,1 +1,15 @@
-<app-quote-card />
+@if(loading()){
+<p>Laddar . . .</p>
+}
+
+<button (click)={} type="button" class="btn btn-primary">Lägg till citat</button>
+
+<div>
+    @for (quote of quote(); track quote.id) {
+    <!-- Kort komponent -->
+    <app-quote-card [quote]="quote" />
+
+    <!-- (bookDeleted) lyssnar på event som kommer från -->
+    <!--(bookDeleted)="onBookDeleted($event)"-->
+    }
+</div>

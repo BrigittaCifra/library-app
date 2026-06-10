@@ -2,7 +2,6 @@ import { Component, Input, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { BookModel } from '../../models/book.model';
-
 import { BookStore } from '../../stores/book.store';
 
 @Component({

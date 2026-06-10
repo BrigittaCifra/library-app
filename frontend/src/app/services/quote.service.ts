@@ -18,8 +18,13 @@ export class QuoteService {
 
   //Hämtar alla citat
   getQuote() {
-    //<BookModel[]> talar om för TypeScript vilken typ svaret ska vara. [] returnerar en lista
+    //<Quote[]> talar om för TypeScript vilken typ svaret ska vara. [] returnerar en lista
     return this.http.get<QuoteModel[]>(this.url);
+  }
+
+  //tar bort ett citat
+  deleteQuote(id: number) {
+    return this.http.delete<void>(`${this.url}/${id}`);
   }
 
 }
