@@ -56,6 +56,7 @@ export class BookForm {
     this.bookForm.reset();
   }
 
+  //När man skickar in formuläret
   onSubmit() {
     // Hämtar formulärets värden och omvandlar dem till en BookModel
     const book = this.bookForm.value as BookModel;

@@ -22,6 +22,11 @@ export class QuoteService {
     return this.http.get<QuoteModel[]>(this.url);
   }
 
+  //lägger till en bok
+  addQuote(quote: QuoteModel) {
+    return this.http.post<QuoteModel>(this.url, quote);
+  }
+
   //tar bort ett citat
   deleteQuote(id: number) {
     return this.http.delete<void>(`${this.url}/${id}`);

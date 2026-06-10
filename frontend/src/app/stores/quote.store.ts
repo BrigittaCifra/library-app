@@ -65,6 +65,21 @@ export class QuoteStore {
             });
     }
 
+    //Skapar en ny bok
+    addQuote(quote: QuoteModel) {
+        this.quoteService.addQuote(quote)
+            .subscribe({
+                next: (quote: QuoteModel) => {
+                    this.state.update(() => ({ ...this.state(), loading: false, quote: [...this.quote(), quote] }))
+                },
+                error: (error) => {
+                    //loggar ut felmeddelandet till konsolen
+                    console.log(error);
+                    this.setError(error);
+                }
+            });
+    }
+
     //Tar bort ett citat
     deleteQuote(id: number) {
         this.quoteService.deleteQuote(id)

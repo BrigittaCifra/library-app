@@ -1,19 +1,17 @@
 <div class="card">
-    <div class="card-header">
-        Quote
-    </div>
+
+    <figure class="list-group list-group-flush p-3">
+        <blockquote class="blockquote">
+            <p>{{quote.content}}</p>
+        </blockquote>
+        <figcaption class="blockquote-footer">
+            Someone famous in <cite title="Source Title">Source Title</cite>
+        </figcaption>
+    </figure>
+
     <div class="card-body">
-        <figure>
-            <blockquote class="blockquote">
-                <p>{{quote.content}}</p>
-            </blockquote>
-            <figcaption class="blockquote-footer">
-                Someone famous in <cite title="Source Title">Source Title</cite>
-            </figcaption>
-        </figure>
-        <div>
-            <a href="#" class="btn btn-primary">Redigera</a>
-            <button (click)="quoteStore.deleteQuote(quote.id)" type="button" class="btn btn-secondary">Radera</button>
-        </div>
+        <a href="#" class="btn btn-primary">Redigera</a>
+        <button (click)="quoteStore.deleteQuote(quote.id)" type="button" class="btn btn-secondary">Radera</button>
     </div>
+
 </div>

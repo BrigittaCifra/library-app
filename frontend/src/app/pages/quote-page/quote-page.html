@@ -2,14 +2,25 @@
 <p>Laddar . . .</p>
 }
 
-<button (click)={} type="button" class="btn btn-primary">Lägg till citat</button>
+<!--Det visas en formulär på sidan om användaren trycker på "lägg till citat"-->
+@if(showForm()){
+<form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName='id'>
+    <div>
+        <label for="content" class="form-label">Citat: </label>
+        <textarea formControlName="content" class="form-control" aria-label="With textarea"
+            placeholder="Innehåll här..."></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Skapa</button>
+        <button (click)="showForm.set(false)" type="button" class="btn btn-secondary">Avbryt</button>
+    </div>
+</form>
+}@else {<button (click)="showForm.set(true)" type="button" class="btn btn-primary">Lägg till citat</button>}
 
 <div>
     @for (quote of quote(); track quote.id) {
-    <!-- Kort komponent -->
+    <!-- citat komponent -->
     <app-quote-card [quote]="quote" />
-
-    <!-- (bookDeleted) lyssnar på event som kommer från -->
-    <!--(bookDeleted)="onBookDeleted($event)"-->
     }
 </div>
