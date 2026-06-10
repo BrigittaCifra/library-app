@@ -1,4 +1,5 @@
-import { Component, Input, Output, EventEmitter, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { BookModel } from '../../models/book.model';
 
@@ -12,6 +13,8 @@ import { BookStore } from '../../stores/book.store';
 })
 export class BookCardComponent {
 
+  private readonly router = inject(Router);
+
   //injekterar bok storen
   bookStore = inject(BookStore);
 
@@ -20,5 +23,10 @@ export class BookCardComponent {
   //här sätts typen till bookmodel för att få extra stöd från vs code
   //sätter default värden på egenskaperna som saknas
   @Input() book: BookModel = { id: 0, title: '', author: '', publishedDate: '', createdAt: '', userId: 0 };
+
+  onEdit() {
+    //Skickar med bokens id till formuläret
+    this.router.navigate([`book/edit/${this.book.id}`]);
+  }
 
 }

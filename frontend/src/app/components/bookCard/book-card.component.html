@@ -5,7 +5,7 @@
     <li class="list-group-item">{{ book.publishedDate }}</li>
   </ul>
   <div class="card-body">
-    <a href="#" class="btn btn-primary">Redigera</a>
+    <button (click)="onEdit()" type="button" class="btn btn-primary">Redigera</button>
     <button (click)="bookStore.deleteBook(book.id)" type="button" class="btn btn-secondary">Radera</button>
   </div>
 </div>
