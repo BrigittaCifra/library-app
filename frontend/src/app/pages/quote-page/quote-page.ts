@@ -29,6 +29,7 @@ export class QuotePage {
   })
 
   showForm = signal(false);
+  newQuote = signal(true);
 
   //Resetar formuläret
   onReset() {
@@ -39,12 +40,30 @@ export class QuotePage {
     });
   }
 
+  cleanUp() {
+    this.newQuote.set(true);
+    this.onReset();
+    this.showForm.set(false);
+  }
+
+  onEdit(quote: QuoteModel) {
+    this.quoteForm.patchValue(quote);
+    this.showForm.set(true);
+    this.newQuote.set(false);
+  }
+
+  //när man skickar in formuläret
   onSubmit() {
     const quote = this.quoteForm.value as QuoteModel;
-    this.quoteStore.addQuote(quote);
+
+    if (this.newQuote() === true) {
+      this.quoteStore.addQuote(quote);
+    } else {
+      this.quoteStore.updateQuote(quote);
+    }
 
     //cleanup
-    this.onReset();
+    this.cleanUp()
   }
 
 }

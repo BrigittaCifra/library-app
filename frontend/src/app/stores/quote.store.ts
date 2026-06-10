@@ -80,6 +80,22 @@ export class QuoteStore {
             });
     }
 
+    //uppdaterar en bok
+    updateQuote(quote: QuoteModel) {
+        this.quoteService.updateQuote(quote)
+            .subscribe({
+                next: () => {
+                    //spread operatorn kopierar alla gamla state och bok arrayen uppdateras med svaret från API:et
+                    this.state.update(() => ({ ...this.state(), loading: false, quote: this.quote().map(q => q.id === quote.id ? quote : q) }))
+                },
+                error: (error) => {
+                    //loggar ut felmeddelandet till konsolen
+                    console.log(error);
+                    this.setError(error);
+                }
+            });
+    }
+
     //Tar bort ett citat
     deleteQuote(id: number) {
         this.quoteService.deleteQuote(id)

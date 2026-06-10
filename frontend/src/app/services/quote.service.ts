@@ -22,9 +22,14 @@ export class QuoteService {
     return this.http.get<QuoteModel[]>(this.url);
   }
 
-  //lägger till en bok
+  //lägger till ett citat
   addQuote(quote: QuoteModel) {
     return this.http.post<QuoteModel>(this.url, quote);
+  }
+
+  //uppdaterar ett citat
+  updateQuote(quote: QuoteModel) {
+    return this.http.put<void>(`${this.url}/${quote.id}`, quote);
   }
 
   //tar bort ett citat
