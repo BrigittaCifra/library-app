@@ -1,9 +1,9 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { BookStore } from '../../stores/book.store';
 
 //Komponenter
 import { BookCardComponent } from '../../components/bookCard/book-card.component';
-import { BookStore } from '../../stores/book.store';
 
 @Component({
   selector: 'app-book-page',

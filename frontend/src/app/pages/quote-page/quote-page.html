@@ -1,1 +1,28 @@
-<app-quote-card />
+@if(loading()){
+<p>Laddar . . .</p>
+}
+
+<!--Det visas en formulär på sidan om användaren trycker på "lägg till citat"-->
+@if(showForm()){
+<form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName='id'>
+    <div>
+        <label for="content" class="form-label">{{ newQuote() ? 'Ny citat' : 'Redigera citat' }}</label>
+        <textarea formControlName="content" class="form-control" aria-label="With textarea"
+            placeholder="Innehåll här..."></textarea>
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">{{ newQuote() ? 'Skapa' : 'Uppdatera' }}</button>
+        <button (click)="cleanUp()" type="button" class="btn btn-secondary">Avbryt</button>
+    </div>
+</form>
+}@else {<button (click)="showForm.set(true); newQuote.set(true)" type="button" class="btn btn-primary">
+    Lägg till citat
+</button>}
+
+<div>
+    @for (quote of quote(); track quote.id) {
+    <!-- citat komponent -->
+    <app-quote-card [quote]="quote" (onEdit)="onEdit($event)" />
+    }
+</div>

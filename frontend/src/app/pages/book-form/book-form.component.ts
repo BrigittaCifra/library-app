@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -9,7 +9,7 @@ import { BookStore } from '../../stores/book.store';
 @Component({
   selector: 'app-book-form',
   imports: [ReactiveFormsModule],
-  templateUrl: './new-book-form.component.html',
+  templateUrl: './book-form.component.html',
   styles: [],
 })
 export class BookForm {
@@ -31,12 +31,15 @@ export class BookForm {
 
   // Access route parameters from snapshot
   id = parseInt(this.route.snapshot.params['id']);
+  pageTitle = signal("Lägg till bok");
 
   //ngOnInit körs exakt en gång efter att en komponent har skapats. Lite som useEffect med en tom dependency array
   ngOnInit() {
 
     //update och create använder samma formulär. Här kontrolleras via routen om det är en update eller en create
     if (this.router.url === `/book/edit/${this.id}`) {
+
+      this.pageTitle.set("Redigera bok");
 
       // Hämtar boken vars id matchar id:t i url:en
       const book = this.bookStore.book().find(b => b.id === this.id);
@@ -53,6 +56,7 @@ export class BookForm {
     this.bookForm.reset();
   }
 
+  //När man skickar in formuläret
   onSubmit() {
     // Hämtar formulärets värden och omvandlar dem till en BookModel
     const book = this.bookForm.value as BookModel;
