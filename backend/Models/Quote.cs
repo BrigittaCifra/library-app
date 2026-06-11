@@ -10,6 +10,7 @@ public class Quote
     [Key]
     public int Id { get; set; }
     public required string Content { get; set; }
+    public string Author { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // Koppling till användare

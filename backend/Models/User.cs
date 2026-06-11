@@ -11,7 +11,8 @@ public class User
     [Key]
     public int Id { get; init; }
     public required string Username { get; set; }
-    public required string Password { get; set; }
+    public string Email { get; set; } = string.Empty;
+    public required string PasswordHash { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // Koppling citat och böcker

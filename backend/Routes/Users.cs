@@ -12,7 +12,7 @@ public static class UserEndpoints
 
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book
-        app.MapPost("/user", async (AppDbContext db, User user) =>
+        app.MapPost("/user/registration", async (AppDbContext db, User user) =>
         {
             try
             {
@@ -26,7 +26,10 @@ public static class UserEndpoints
             }
         });
 
-        //GET -
+        /* app.MapPost("/user/login", async (AppDbContext db) =>
+        {
+
+        }); */
 
         //Bearer i header (login post)
 
