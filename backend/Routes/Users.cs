@@ -18,6 +18,9 @@ public static class UserEndpoints
         {
             try
             {
+
+                if (string.IsNullOrEmpty(request.Username)) return Results.BadRequest("Användarnamn saknas");
+
                 //Kollar om användarnamnet är tagen. Kollar om den inskickade användarnamnet matchar med någon av användarnamnen i databasen
                 if (await db.Users.AnyAsync(e => e.Username == request.Username)) return Results.BadRequest("Användarnamnet finns redan");
 
