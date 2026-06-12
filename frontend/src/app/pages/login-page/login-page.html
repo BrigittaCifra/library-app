@@ -1,0 +1,20 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
+    <input type="hidden" formControlName='id'>
+    <div class="mb-3">
+        <label for="email" class="form-label">Mejl</label>
+        <input formControlName="email" type="text" class="form-control">
+    </div>
+    <div class="mb-3">
+        <label for="password" class="form-label">Lösenord</label>
+        <input formControlName="password" type="text" class="form-control">
+    </div>
+    <div>
+        <button type="submit" class="btn btn-primary">Logga in</button>
+        <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+    </div>
+</form>
+
+<div>
+    <p>Har du inget konto?</p>
+    <a href="#">Registrera</a>
+</div>

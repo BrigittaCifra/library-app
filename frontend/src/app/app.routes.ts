@@ -12,6 +12,6 @@ export const routes: Routes = [
     { path: 'book/new', component: BookForm },
     { path: 'book/edit/:id', component: BookForm },
     { path: 'quotes', component: QuotePage },
-    { path: 'login', component: LoginPage },
+    { path: 'user/login', component: LoginPage },
     { path: '**', component: PageNotFound } //wildcard route
 ];
