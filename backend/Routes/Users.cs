@@ -14,10 +14,22 @@ public static class UserEndpoints
 
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book
-        app.MapPost("/user/registration", async (AppDbContext db, User user) =>
+        app.MapPost("/user/registration", async (AppDbContext db, RegisterRequest request) =>
         {
             try
             {
+                //Kollar om användarnamnet är tagen. Kollar om den inskickade användarnamnet matchar med någon av användarnamnen i databasen
+                if (await db.Users.AnyAsync(e => e.Username == request.Username)) return Results.BadRequest("Användarnamnet finns redan");
+
+                // Skapar en ny användare från request och hashar lösenordet
+                var user = new User
+                {
+                    Username = request.Username,
+                    Email = request.Email,
+                    PasswordHash = PasswordService.HashPassword(request.Password)
+                };
+
+                //Lägger till användaren i databasen
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
                 return Results.Created($"/user/{user.Id}", user); // 201
@@ -28,6 +40,7 @@ public static class UserEndpoints
             }
         });
 
+        //Login endpoint. Ska alltid vara POST
         app.MapPost("/user/login", async (AppDbContext db, LoginRequest loginRequest, IConfiguration config) =>
         {
             try
@@ -48,10 +61,6 @@ public static class UserEndpoints
         });
 
         //Bearer i header (login post)
-
-        //TBA: 
-        //Inloggning
-        //Auth
 
     }
 }
