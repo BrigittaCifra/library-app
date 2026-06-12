@@ -2,6 +2,7 @@ using backend.Data;
 using Microsoft.EntityFrameworkCore;
 //importerar alla klasser från models mappen. Utan 'using' behöver man skriva ut hela sökvägen
 using backend.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Routes;
 
@@ -10,7 +11,7 @@ public static class BookEndpoints
     public static void MapBookEndpoints(this WebApplication app)
     {
         // GET hämtar alla böcker
-        app.MapGet("/book", async (AppDbContext db) =>
+        app.MapGet("/book", [Authorize] async (AppDbContext db) =>
         {
             //Hämtar alla böcker från databasen och returnerar dem som JSON
             //databas kontext + dbSet + EF metod
