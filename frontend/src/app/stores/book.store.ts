@@ -1,6 +1,8 @@
-import { BookModel } from "../models/book.model";
 import { HttpErrorResponse, HttpHeaderResponse } from "@angular/common/http";
 import { inject, Injectable, signal, computed } from "@angular/core";
+
+//Bok relaterade imports
+import { BookModel } from "../models/book.model";
 import { BookService } from "../services/book.service";
 
 //En konstruktor är en funktion som körs när man skapar en ny instans, objekt, av en klass.

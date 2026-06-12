@@ -1,6 +1,8 @@
-import { QuoteModel } from "../models/quote.model";
 import { HttpErrorResponse, HttpHeaderResponse } from "@angular/common/http";
 import { inject, Injectable, signal, computed } from "@angular/core";
+
+//Citat relaterade import
+import { QuoteModel } from "../models/quote.model";
 import { QuoteService } from "../services/quote.service";
 
 //En konstruktor är en funktion som körs när man skapar en ny instans, objekt, av en klass.

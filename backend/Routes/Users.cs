@@ -14,7 +14,7 @@ public static class UserEndpoints
 
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book
-        app.MapPost("/user/registration", async (AppDbContext db, RegisterRequest request) =>
+        app.MapPost("/user/register", async (AppDbContext db, RegisterRequest request) =>
         {
             try
             {
