@@ -53,6 +53,7 @@ public static class UserEndpoints
 
                 //Genererar token
                 var token = PasswordService.GenerateJwtToken(user, config);
+                return Results.Ok(new AuthResponse { Token = token, Username = user.Username, Email = user.Email });
             }
             catch (Exception ex)
             {
