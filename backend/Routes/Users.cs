@@ -1,4 +1,6 @@
 using backend.Data;
+using backend.Services;
+using backend.DTOs;
 using Microsoft.EntityFrameworkCore;
 //importerar alla klasser från models mappen. Utan 'using' behöver man skriva ut hela sökvägen
 using backend.Models;
@@ -26,10 +28,24 @@ public static class UserEndpoints
             }
         });
 
-        /* app.MapPost("/user/login", async (AppDbContext db) =>
+        app.MapPost("/user/login", async (AppDbContext db, LoginRequest loginRequest, IConfiguration config) =>
         {
+            try
+            {
+                //Kollar om användaren finns i databasen
+                var user = await db.Users.FirstOrDefaultAsync(e => e.Email == loginRequest.Email);
 
-        }); */
+                //Om användaren inte finns eller lösenordet är fel
+                if (user is null || !PasswordService.VerifyPassword(loginRequest.Password, user.PasswordHash)) return Results.Unauthorized();
+
+                //Genererar token
+                var token = PasswordService.GenerateJwtToken(user, config);
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        });
 
         //Bearer i header (login post)
 

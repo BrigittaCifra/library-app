@@ -9,16 +9,12 @@ using Microsoft.IdentityModel.Tokens;
 
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Security.Cryptography;
 using System.Text;
 
 //Sätter CORS policy namnet till _myAllowSpecificOrigins
 var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 //creates a web application with default configuration
 var builder = WebApplication.CreateBuilder(args);
-
-var jwtSettings = builder.Configuration.GetSection("Authentication");
-var key = jwtSettings["Key"] ?? throw new InvalidOperationException("test");
 
 //JWT auth
 //Talar om för .NET att JWT används för inlogg
@@ -37,13 +33,6 @@ builder.Services.AddAuthentication(options =>
     options.SaveToken = true;
     options.TokenValidationParameters = new TokenValidationParameters
     {
-        //Vem som skapade token
-        ValidIssuer = builder.Configuration["JwtConfig:Issuer"],
-        //Vem token är till för
-        ValidAudience = builder.Configuration["JwtConfig:Audience"],
-        //verifierar att token inte manipulerats
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
-        //IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("1d6e4161-39d9-4f82-8334-9cb1b583f7e9")),
         //Kontrollerar att Issuer stämmer
         ValidateIssuer = true,
         //Kontrollerar att Audience stämmer
@@ -51,10 +40,20 @@ builder.Services.AddAuthentication(options =>
         //Kontrollerar att token inte har gått ut
         ValidateLifetime = true,
         //Kontrollerar att token är signerad med rätt nyckel
-        ValidateIssuerSigningKey = true
+        ValidateIssuerSigningKey = true,
+        //Vem som skapade token
+        ValidIssuer = builder.Configuration["Authentication:Issuer"],
+        //Vem token är till för
+        ValidAudience = builder.Configuration["Authentication:Audience"],
+        //verifierar att token inte manipulerats
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Key"]!)),
+        //If you are working across different servers their clocks might be a little bit out of sync.
+        //ClockSkew adds a little buffer for these cases so both devices can validate the token
+        ClockSkew = TimeSpan.Zero
+
     };
 });
-//Talar om för .NET att man vill kunna skydda endpoints med [Authorize]
+//Talar om för .NET att man vill kunna skydda endpoints med Authorize
 builder.Services.AddAuthorization();
 
 //skapar en AppDbContext och kopplar den till PostgreSQL
@@ -79,6 +78,7 @@ builder.Services.AddCors(options =>
 //Builds the configured WebApplication instance
 var app = builder.Build();
 
+//Middleware för autentisering och auktorisering
 //Kollar om användaren har en giltig token
 app.UseAuthentication();
 //Kollar om användaren har tillgång till den specifika endpointen
