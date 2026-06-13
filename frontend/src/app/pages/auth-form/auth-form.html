@@ -1,6 +1,6 @@
 <h2>{{this.pageTitle()}}</h2>
 
-<form [formGroup]="loginForm" (ngSubmit)="login()" action="">
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
     <!-- <input type="hidden" formControlName='id'> -->
     @if(!this.isLoginPage){
     <div class="mb-3">

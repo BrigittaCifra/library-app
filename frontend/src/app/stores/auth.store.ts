@@ -67,7 +67,26 @@ export class AuthStore {
         return true;
     }
 
-    registerUser(credentials: RegisterModel) { }
+    //Registrerar en ny användare 
+    registerUser(credentials: RegisterModel) {
+        //sätter loadingen till true
+        this.setLoading();
+        this.authService.Register(credentials).subscribe({
+            next: (response: AuthResponseModel) => {
+                //Sparar token i local storage
+                localStorage.setItem(this.tokenKey, response.token);
+                //Uppdaterar token staten och sätter loadingen till false
+                this.state.update(() => ({ ...this.state(), token: response.token, loading: false }));
+                //Navigerar till landningssidan
+                this.router.navigate(['/']);
+            },
+            error: (error) => {
+                //loggar ut felmeddelandet till konsolen
+                console.log(`Registreringen misslyckades ${error}`);
+                this.setError(error);
+            }
+        });
+    }
 
     //Login metoder
     loginUser(credentials: LoginModel) {
@@ -77,7 +96,7 @@ export class AuthStore {
         this.authService.Login(credentials)
             .subscribe({
                 next: (response: AuthResponseModel) => {
-                    //Sparar tokens i local storage
+                    //Sparar token i local storage
                     localStorage.setItem(this.tokenKey, response.token);
                     //Uppdaterar token staten och sätter loadingen till false
                     this.state.update(() => ({ ...this.state(), token: response.token, loading: false }));
@@ -115,6 +134,7 @@ export class AuthStore {
         this.router.navigate(['/user/login']);
     }
 
+    //Sätter en header men tokenen som request kan använda för att komma åt skidade endpoints
     getHeaders() {
         return { Authorization: `Bearer ${this.getToken()}` };
     }
