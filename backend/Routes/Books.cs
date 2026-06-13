@@ -88,7 +88,7 @@ public static class BookEndpoints
 
                 // Om det inte finns en bok med det angivna id:t
                 // AnyAsync returnerar ett boolean värde medan FindAsync returnerar ett helt objekt
-                if (!await db.Books.AnyAsync(e => e.Id == id && e.UserId == userId)) return Results.NotFound();
+                if (!await db.Books.AnyAsync(b => b.Id == id && b.UserId == userId)) return Results.NotFound();
 
                 //Sätter bokens Id från URL:en så att EF Core vet vilken bok som ska uppdateras. Kommer annars skapa en ny resurs
                 book.Id = id;

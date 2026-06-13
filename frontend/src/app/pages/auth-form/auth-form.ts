@@ -1,5 +1,5 @@
 //Angular imports
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink, Router } from '@angular/router';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
@@ -27,11 +27,6 @@ export class AuthForm {
 
   //Skapar en boolean som är true om url:en är /user/login
   isLoginPage: boolean = this.router.url === '/user/login';
-  pageTitle = signal("Logga in");
-
-  ngOnInit() {
-    if (!this.isLoginPage) this.pageTitle.set("Registrera");
-  }
 
   onReset() {
     console.log("Reset");

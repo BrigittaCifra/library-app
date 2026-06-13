@@ -1,6 +1,6 @@
-<h2>{{this.pageTitle()}}</h2>
+<h2>{{this.isLoginPage ? "Logga in" : "Registrera"}}</h2>
 
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
+<form [formGroup]="loginForm" (ngSubmit)="login()" action="">
     <!-- <input type="hidden" formControlName='id'> -->
     @if(!this.isLoginPage){
     <div class="mb-3">
@@ -17,7 +17,7 @@
         <input formControlName="password" type="password" class="form-control" required placeholder="Lösenord" />
     </div>
     <div>
-        <button type="submit" class="btn btn-primary">Logga in</button>
+        <button type="submit" class="btn btn-primary">{{this.isLoginPage ? "Logga in" : "Registrera"}}</button>
         <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
     </div>
 </form>
