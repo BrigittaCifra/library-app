@@ -67,6 +67,8 @@ export class AuthStore {
         return true;
     }
 
+    registerUser(credentials: RegisterModel) { }
+
     //Login metoder
     loginUser(credentials: LoginModel) {
         //sätter loadingen till true

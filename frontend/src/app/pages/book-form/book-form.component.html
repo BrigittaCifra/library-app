@@ -9,6 +9,10 @@
         <label for="author" class="form-label">Författare</label>
         <input formControlName="author" type="text" class="form-control">
     </div>
+    <div class="mb-3">
+        <label for="publishedDate" class="form-label">Datum</label>
+        <input formControlName="publishedDate" type="date" class="form-control">
+    </div>
     <div>
         <button type="submit" class="btn btn-primary">Submit</button>
         <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>

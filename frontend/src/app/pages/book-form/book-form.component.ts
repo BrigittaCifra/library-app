@@ -25,7 +25,8 @@ export class BookForm {
     id: [0],
     title: [''],
     author: [''],
-    publishedDate: ['1937-09-21'],
+    publishedDate: [''],
+    userId: [1]
   })
 
   // Access route parameters from snapshot

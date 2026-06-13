@@ -1,8 +1,16 @@
+<h2>{{this.pageTitle()}}</h2>
+
 <form [formGroup]="loginForm" (ngSubmit)="login()" action="">
     <!-- <input type="hidden" formControlName='id'> -->
+    @if(!this.isLoginPage){
+    <div class="mb-3">
+        <label for="username" class="form-label">Användarnamn</label>
+        <input formControlName="username" type="text" class="form-control" required placeholder="Användarnamn" />
+    </div>
+    }
     <div class="mb-3">
         <label for="email" class="form-label">Mejl</label>
-        <input formControlName="email" type="text" class="form-control" required placeholder="Mejl" />
+        <input formControlName="email" type="email" class="form-control" required placeholder="Mejl" />
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Lösenord</label>
@@ -15,6 +23,11 @@
 </form>
 
 <div>
+    @if(this.isLoginPage){
     <p>Har du inget konto?</p>
-    <a href="#">Registrera</a>
+    <a routerLink="/user/register">Registrera</a>
+    }@else{
+    <p>Har du ett konto?</p>
+    <a routerLink="/user/login">Logga in</a>
+    }
 </div>

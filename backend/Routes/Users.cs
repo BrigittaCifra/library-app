@@ -46,6 +46,9 @@ public static class UserEndpoints
                 //Kollar om användarnamnet är tagen. Kollar om den inskickade användarnamnet matchar med någon av användarnamnen i databasen
                 if (await db.Users.AnyAsync(e => e.Username == request.Username)) return Results.BadRequest("Användarnamnet finns redan");
 
+                //Kollar om användarnamnet är tagen. Kollar om den inskickade användarnamnet matchar med någon av användarnamnen i databasen
+                if (await db.Users.AnyAsync(e => e.Email == request.Email)) return Results.BadRequest("Mejlet används redan");
+
                 // Skapar en ny användare från request och hashar lösenordet
                 var user = new User
                 {
