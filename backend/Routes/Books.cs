@@ -1,30 +1,42 @@
-using backend.Data;
-using Microsoft.EntityFrameworkCore;
 //importerar alla klasser från models mappen. Utan 'using' behöver man skriva ut hela sökvägen
+using backend.Data;
 using backend.Models;
+using backend.Services;
+
+//Microsoft imports
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.EntityFrameworkCore;
+
+using System.Security.Claims;
 
 namespace backend.Routes;
 
 public static class BookEndpoints
 {
+
     public static void MapBookEndpoints(this WebApplication app)
     {
         // GET hämtar alla böcker
-        app.MapGet("/book", [Authorize] async (AppDbContext db) =>
+        app.MapGet("/book", async (AppDbContext db, ClaimsPrincipal user) =>
         {
             //Hämtar alla böcker från databasen och returnerar dem som JSON
             //databas kontext + dbSet + EF metod
             try
             {
-                var books = await db.Books.ToListAsync();
+                //Hämtar user id:t från den inkomna JWT tokenen med hjälp av ClaimsPrincipal
+                //ClaimsPrincipal skapas genom app.UseAuthentication() och utgår från claims och har därför också samma strukturs som claims
+                var userId = PasswordService.GetUserId(user);
+                if (userId == null) return Results.Unauthorized();
+
+                //Hämtar all böcker för en användare
+                var books = await db.Books.Where(b => b.UserId == userId).ToListAsync();
                 return Results.Ok(books); //200
             }
             catch (Exception ex)
             {
                 return Results.Problem(ex.Message);
             }
-        });
+        }).RequireAuthorization();
 
         // GET hämtar en specifik bok
         app.MapGet("/book/{id}", async (AppDbContext db, int id) =>

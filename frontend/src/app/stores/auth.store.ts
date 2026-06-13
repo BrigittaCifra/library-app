@@ -8,7 +8,7 @@ import { RegisterModel } from "../models/register.model";
 import { LoginModel } from "../models/login.model";
 import { AuthResponseModel } from "../models/auth-response.model";
 
-import { jwtDecode } from 'jwt-decode';
+import { jwtDecode } from "jwt-decode";
 
 export interface AuthState {
     token: string | null,
@@ -84,7 +84,7 @@ export class AuthStore {
                 },
                 error: (error) => {
                     //loggar ut felmeddelandet till konsolen
-                    console.log(error);
+                    console.log(`Inloggningen misslyckades ${error}`);
                     this.setError(error);
                 }
             });
@@ -111,6 +111,10 @@ export class AuthStore {
 
         //Navigerar användaren till inlogg sidan
         this.router.navigate(['/user/login']);
+    }
+
+    getHeaders() {
+        return { Authorization: `Bearer ${this.getToken()}` };
     }
 
     //Körs när appen startar. kollar om token redan finns i localStorage

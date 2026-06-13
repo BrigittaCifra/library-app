@@ -80,4 +80,15 @@ public static class PasswordService
         return tokenHandler.WriteToken(token);
     }
 
+    //Hämtar användar id:t från JWT tokenen
+    //Returnerar antingen int eller null
+    public static int? GetUserId(ClaimsPrincipal user)
+    {
+        //Hämtar användar id:t från den inkomna JWT tokenen med hjälp av ClaimsPrincipal
+        //ClaimsPrincipal skapas genom app.UseAuthentication() och utgår från claims och har därför också samma strukturs som claims
+        var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+
+        return userId != null ? int.Parse(userId) : null;
+    }
+
 }

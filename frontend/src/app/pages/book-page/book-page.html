@@ -1,18 +1,21 @@
 <!--Hanterar loading staten-->
 @if(loading()){
 <p>Laddar . . .</p>
-}
+} @else {
 
 <!-- Länk till formuläret -->
 <a class="btn btn-primary" role="button" routerLink="book/new">Lägg till ny bok</a>
 
 <div class="row">
     <div class="col">
+        @if(book().length > 0){
         @for (book of book(); track book.id) {
-        <!-- Kort komponent -->
         <app-book-card [book]="book" />
-        <!-- (bookDeleted) lyssnar på event som kommer från -->
-        <!--(bookDeleted)="onBookDeleted($event)"-->
+        }
+        } @else {
+        <p>Inga böcker hittades</p>
         }
     </div>
 </div>
+
+}

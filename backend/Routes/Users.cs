@@ -1,16 +1,38 @@
-using backend.Data;
-using backend.Services;
-using backend.DTOs;
-using Microsoft.EntityFrameworkCore;
 //importerar alla klasser från models mappen. Utan 'using' behöver man skriva ut hela sökvägen
+using backend.Data;
 using backend.Models;
+using backend.DTOs;
+using backend.Services;
+
+using Microsoft.EntityFrameworkCore;
+
+using System.Security.Claims;
 
 namespace backend.Routes;
 
 public static class UserEndpoints
 {
+    static int? GetUserId(ClaimsPrincipal user)
+    {
+        var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        return userId != null ? int.Parse(userId) : null;
+    }
     public static void MapUserEndpoints(this WebApplication app)
     {
+
+        // GET hämtar alla användare. Endast för att under utvecklingen lättare kunna se alla användare 
+        app.MapGet("/user", async (AppDbContext db) =>
+        {
+            try
+            {
+                var users = await db.Users.ToListAsync();
+                return Results.Ok(users); //200
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        });
 
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book

@@ -79,7 +79,7 @@ builder.Services.AddCors(options =>
 var app = builder.Build();
 
 //Middleware för autentisering och auktorisering
-//Kollar om användaren har en giltig token
+//Kollar om användaren har en giltig token. Läser token och skapar ClaimsPrincipal
 app.UseAuthentication();
 //Kollar om användaren har tillgång till den specifika endpointen
 app.UseAuthorization();

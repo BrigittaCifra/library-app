@@ -1,12 +1,12 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" action="">
-    <input type="hidden" formControlName='id'>
+<form [formGroup]="loginForm" (ngSubmit)="login()" action="">
+    <!-- <input type="hidden" formControlName='id'> -->
     <div class="mb-3">
         <label for="email" class="form-label">Mejl</label>
-        <input formControlName="email" type="text" class="form-control">
+        <input formControlName="email" type="text" class="form-control" required placeholder="Mejl" />
     </div>
     <div class="mb-3">
         <label for="password" class="form-label">Lösenord</label>
-        <input formControlName="password" type="text" class="form-control">
+        <input formControlName="password" type="password" class="form-control" required placeholder="Lösenord" />
     </div>
     <div>
         <button type="submit" class="btn btn-primary">Logga in</button>
