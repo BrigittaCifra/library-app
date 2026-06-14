@@ -1,8 +1,7 @@
-<div class="card p-4 d-flex gap-4 col-12">
+<div class="card p-4 d-flex gap-4">
     <h2>{{isLoginPage ? "Logga in" : "Registrera"}}</h2>
 
     <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column gap-4">
-        <!-- <input type="hidden" formControlName='id'> -->
         @if(!this.isLoginPage){
         <div>
             <label for="username" class="form-label">Användarnamn</label>
