@@ -1,21 +1,26 @@
-<!--Hanterar loading staten-->
-@if(loading()){
-<p>Laddar . . .</p>
-} @else {
+<main class="container-fluid mt-3 d-flex gap-4 flex-column">
+    <!--Hanterar loading staten-->
+    @if(loading()){
+    <p>Laddar . . .</p>
+    } @else {
+    <!-- Länk till formuläret -->
+    <a class="btn btn-primary align-self-start" role="button" routerLink="book/new">Lägg till ny bok</a>
 
-<!-- Länk till formuläret -->
-<a class="btn btn-primary" role="button" routerLink="book/new">Lägg till ny bok</a>
+    @if(book().length > 0){
+    <p>{{book().length}} böcker hittades</p>
+    }
 
-<div class="row">
-    <div class="col">
+    <div class="row gy-4">
         @if(book().length > 0){
         @for (book of book(); track book.id) {
-        <app-book-card [book]="book" />
+        <div class="col-12 col-sm-6 col-md-4">
+            <app-book-card [book]="book" />
+        </div>
         }
         } @else {
         <p>Inga böcker hittades</p>
         }
     </div>
-</div>
 
-}
+    }
+</main>
