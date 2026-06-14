@@ -28,7 +28,7 @@ export class AuthStore {
     private readonly authService = inject(AuthService);
     private router = inject(Router);
     private state = signal(defaultState);
-    private readonly tokenKey: string = "";
+    private readonly tokenKey: string = "auth_token";
 
     token = computed(() => this.state().token);
     loading = computed(() => this.state().loading);
