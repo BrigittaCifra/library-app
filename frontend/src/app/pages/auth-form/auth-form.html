@@ -1,37 +1,39 @@
-<div class="card p-4 d-flex gap-4">
-    <h2>{{isLoginPage ? "Logga in" : "Registrera"}}</h2>
+<main class="container-fluid mt-3 mb-3 d-flex justify-content-center">
+    <div class="card p-4 d-flex gap-4">
+        <h2>{{isLoginPage ? "Logga in" : "Registrera"}}</h2>
 
-    <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column gap-4">
-        @if(!this.isLoginPage){
-        <div>
-            <label for="username" class="form-label">Användarnamn</label>
-            <input id="username" formControlName="username" type="text" class="form-control" required
-                placeholder="Användarnamn" />
-        </div>
-        }
-        <div>
-            <label for="email" class="form-label">Mejl</label>
-            <input id="email" formControlName="email" type="email" class="form-control" required
-                placeholder="Exempel@hotmail.com" />
-        </div>
-        <div>
-            <label for="password" class="form-label">Lösenord</label>
-            <input id="password" formControlName="password" type="password" class="form-control" required
-                placeholder="Lösenord" />
-        </div>
-        <div class="d-flex gap-2">
-            <button type="submit" class="btn btn-primary">{{isLoginPage ? "Logga in" : "Registrera"}}</button>
-            <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
-        </div>
-    </form>
+        <form [formGroup]="loginForm" (ngSubmit)="login()" class="d-flex flex-column gap-4">
+            @if(!this.isLoginPage){
+            <div>
+                <label for="username" class="form-label">Användarnamn</label>
+                <input id="username" formControlName="username" type="text" class="form-control" required
+                    placeholder="Användarnamn" />
+            </div>
+            }
+            <div>
+                <label for="email" class="form-label">Mejl</label>
+                <input id="email" formControlName="email" type="email" class="form-control" required
+                    placeholder="Exempel@hotmail.com" />
+            </div>
+            <div>
+                <label for="password" class="form-label">Lösenord</label>
+                <input id="password" formControlName="password" type="password" class="form-control" required
+                    placeholder="Lösenord" />
+            </div>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">{{isLoginPage ? "Logga in" : "Registrera"}}</button>
+                <button type="button" class="btn btn-secondary" (click)="onReset()">Reset</button>
+            </div>
+        </form>
 
-    <div class="d-flex gap-2 align-items-center">
-        @if(this.isLoginPage){
-        <p>Har du inget konto?</p>
-        <a routerLink="/user/register">Registrera</a>
-        }@else{
-        <p>Har du ett konto?</p>
-        <a routerLink="/user/login">Logga in</a>
-        }
+        <div class="d-flex gap-2 align-items-center">
+            @if(this.isLoginPage){
+            <p>Har du inget konto?</p>
+            <a routerLink="/user/register">Registrera</a>
+            }@else{
+            <p>Har du ett konto?</p>
+            <a routerLink="/user/login">Logga in</a>
+            }
+        </div>
     </div>
-</div>
+</main>
