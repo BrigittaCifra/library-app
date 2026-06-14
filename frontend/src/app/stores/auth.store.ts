@@ -28,6 +28,7 @@ export class AuthStore {
     private readonly authService = inject(AuthService);
     private router = inject(Router);
     private state = signal(defaultState);
+    //Sätter vad nyckeln ska heta i local storage
     private readonly tokenKey: string = "auth_token";
 
     token = computed(() => this.state().token);
