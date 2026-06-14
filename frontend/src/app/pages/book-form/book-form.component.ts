@@ -25,7 +25,7 @@ export class BookForm {
     id: [0],
     title: [''],
     author: [''],
-    publishedDate: ['1937-09-21T00:00:00Z'],
+    publishedDate: [''],
     userId: [1]
   })
 

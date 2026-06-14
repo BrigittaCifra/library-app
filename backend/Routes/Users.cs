@@ -1,20 +1,42 @@
-using backend.Data;
-using backend.Services;
-using backend.DTOs;
-using Microsoft.EntityFrameworkCore;
 //importerar alla klasser från models mappen. Utan 'using' behöver man skriva ut hela sökvägen
+using backend.Data;
 using backend.Models;
+using backend.DTOs;
+using backend.Services;
+
+using Microsoft.EntityFrameworkCore;
+
+using System.Security.Claims;
 
 namespace backend.Routes;
 
 public static class UserEndpoints
 {
+    static int? GetUserId(ClaimsPrincipal user)
+    {
+        var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        return userId != null ? int.Parse(userId) : null;
+    }
     public static void MapUserEndpoints(this WebApplication app)
     {
 
+        // GET hämtar alla användare. Endast för att under utvecklingen lättare kunna se alla användare 
+        app.MapGet("/user", async (AppDbContext db) =>
+        {
+            try
+            {
+                var users = await db.Users.ToListAsync();
+                return Results.Ok(users); //200
+            }
+            catch (Exception ex)
+            {
+                return Results.Problem(ex.Message);
+            }
+        });
+
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book
-        app.MapPost("/user/registration", async (AppDbContext db, RegisterRequest request) =>
+        app.MapPost("/user/register", async (AppDbContext db, RegisterRequest request) =>
         {
             try
             {
@@ -23,6 +45,9 @@ public static class UserEndpoints
 
                 //Kollar om användarnamnet är tagen. Kollar om den inskickade användarnamnet matchar med någon av användarnamnen i databasen
                 if (await db.Users.AnyAsync(e => e.Username == request.Username)) return Results.BadRequest("Användarnamnet finns redan");
+
+                //Kollar om användarnamnet är tagen. Kollar om den inskickade användarnamnet matchar med någon av användarnamnen i databasen
+                if (await db.Users.AnyAsync(e => e.Email == request.Email)) return Results.BadRequest("Mejlet används redan");
 
                 // Skapar en ny användare från request och hashar lösenordet
                 var user = new User

@@ -15,6 +15,7 @@ public class Book
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
     // Koppling till användare
+    //Fk fälltet är non-nullable. Det innebär att Book tabellen har cascade delete eftersom relationen är required
     public int UserId { get; set; }
     public User User { get; set; } = null!;
 }

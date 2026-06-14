@@ -3,7 +3,7 @@ import { RouterLink } from '@angular/router';
 import { BookStore } from '../../stores/book.store';
 
 //Komponenter
-import { BookCardComponent } from '../../components/bookCard/book-card.component';
+import { BookCardComponent } from '../../components/book-card/book-card.component';
 
 @Component({
   selector: 'app-book-page',

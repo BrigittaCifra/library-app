@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { environment } from '../../environments/environment.development';
 import { QuoteModel } from '../models/quote.model';
 
+import { AuthStore } from '../stores/auth.store';
+
 //Injectable decorator. Tillåter en att injectera servicen i komponenter
 //providedIn: 'root' blir global
 @Injectable({
@@ -12,6 +14,7 @@ export class QuoteService {
   //inject är det moderna sättet att injectera på? Injecterar Angulars inbyggda HTTP klient. Utan den kan man inte skicka HTTP req
   //private innebär att egenskapen kan bara användas i BookService klassen. Komponenter som använder servicen kan inte komma åt http direkt, bara metoderna som getBooks()
   private http = inject(HttpClient);
+  private authStore = inject(AuthStore);
 
   //http://localhost:5222/quote
   private url = environment.apiUrl + '/quote';
@@ -19,22 +22,22 @@ export class QuoteService {
   //Hämtar alla citat
   getQuote() {
     //<Quote[]> talar om för TypeScript vilken typ svaret ska vara. [] returnerar en lista
-    return this.http.get<QuoteModel[]>(this.url);
+    return this.http.get<QuoteModel[]>(this.url, { headers: this.authStore.getHeaders() });
   }
 
   //lägger till ett citat
   addQuote(quote: QuoteModel) {
-    return this.http.post<QuoteModel>(this.url, quote);
+    return this.http.post<QuoteModel>(this.url, quote, { headers: this.authStore.getHeaders() });
   }
 
   //uppdaterar ett citat
   updateQuote(quote: QuoteModel) {
-    return this.http.put<void>(`${this.url}/${quote.id}`, quote);
+    return this.http.put<void>(`${this.url}/${quote.id}`, quote, { headers: this.authStore.getHeaders() });
   }
 
   //tar bort ett citat
   deleteQuote(id: number) {
-    return this.http.delete<void>(`${this.url}/${id}`);
+    return this.http.delete<void>(`${this.url}/${id}`, { headers: this.authStore.getHeaders() });
   }
 
 }

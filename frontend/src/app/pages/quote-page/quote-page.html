@@ -11,6 +11,10 @@
         <textarea formControlName="content" class="form-control" aria-label="With textarea"
             placeholder="Innehåll här..."></textarea>
     </div>
+    <div class="mb-3">
+        <label for="author" class="form-label">Författare</label>
+        <input formControlName="author" type="text" class="form-control">
+    </div>
     <div>
         <button type="submit" class="btn btn-primary">{{ newQuote() ? 'Skapa' : 'Uppdatera' }}</button>
         <button (click)="cleanUp()" type="button" class="btn btn-secondary">Avbryt</button>
@@ -21,8 +25,12 @@
 </button>}
 
 <div>
+    @if(quote().length > 0){
     @for (quote of quote(); track quote.id) {
     <!-- citat komponent -->
     <app-quote-card [quote]="quote" (onEdit)="onEdit($event)" />
+    }
+    } @else {
+    <p>Inga citat hittades</p>
     }
 </div>

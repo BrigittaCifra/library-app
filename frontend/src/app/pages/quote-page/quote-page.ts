@@ -25,6 +25,7 @@ export class QuotePage {
   quoteForm = this.fb.group({
     id: [0],
     content: [''],
+    author: [''],
     userId: [1]
   })
 
@@ -36,6 +37,7 @@ export class QuotePage {
     this.quoteForm.reset({
       id: 0,
       content: '',
+      author: '',
       userId: 1
     });
   }

@@ -13,7 +13,8 @@ public class Quote
     public string Author { get; set; } = string.Empty;
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
 
-    // Koppling till användare
+    //Koppling till användare
+    //Fk fälltet är non-nullable. Det innebär att Quote tabellen har cascade delete eftersom relationen är required
     public int UserId { get; set; }
     public User User { get; set; } = null!;
 }
