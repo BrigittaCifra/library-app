@@ -14,7 +14,7 @@ export class QuoteCard {
   //injekterar bok storen
   quoteStore = inject(QuoteStore);
 
-  @Input() quote: QuoteModel = { id: 0, content: '', createdAt: '', userId: 0 };
+  @Input() quote: QuoteModel = { id: 0, content: '', author: '', createdAt: '', userId: 0 };
 
   @Output() onEdit = new EventEmitter<QuoteModel>();
 

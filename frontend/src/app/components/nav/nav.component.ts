@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
+
+import { AuthStore } from '../../stores/auth.store';
 
 @Component({
   selector: 'app-nav',
@@ -7,4 +9,6 @@ import { RouterLink } from '@angular/router';
   templateUrl: './nav.component.html',
   styles: [],
 })
-export class NavbarComponent { }
+export class NavbarComponent {
+  authStore = inject(AuthStore);
+}

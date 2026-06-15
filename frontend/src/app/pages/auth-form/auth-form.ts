@@ -27,6 +27,7 @@ export class AuthForm {
 
   //Skapar en boolean som är true om url:en är /user/login
   isLoginPage: boolean = this.router.url === '/user/login';
+  error = this.authStore.error;
 
   onReset() {
     console.log("Reset");
