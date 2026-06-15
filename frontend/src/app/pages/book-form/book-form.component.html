@@ -8,15 +8,17 @@
                 <input id="title" formControlName="title" type="text" class="form-control">
             </div>
             <div>
-                <label for="author" class="form-label">Författare</label>
+                <label for="author" class="form-label"><i
+                        class="fa-regular fa-user text-secondary me-2"></i>Författare</label>
                 <input id="author" formControlName="author" type="text" class="form-control">
             </div>
             <div>
-                <label for="publishedDate" class="form-label">Datum</label>
+                <label for="publishedDate" class="form-label"><i
+                        class="fa-regular fa-calendar text-secondary me-2"></i>Datum</label>
                 <input id="publishedDate" formControlName="publishedDate" type="date" class="form-control">
             </div>
             <div class="d-flex gap-2">
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Skapa</button>
                 <button type="button" class="btn btn-secondary" (click)="onReset()">Rensa</button>
             </div>
         </form>

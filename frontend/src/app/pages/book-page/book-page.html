@@ -1,4 +1,4 @@
-<main class="container-fluid mt-3 mb-3 d-flex gap-4 flex-column">
+<main class="container-lg mt-5 mb-3 d-flex gap-4 flex-column">
     <!--Hanterar loading staten-->
     @if(loading()){
     <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
@@ -9,7 +9,8 @@
 
     } @else {
     <!-- Länk till formuläret -->
-    <a class="btn btn-primary align-self-start" role="button" routerLink="book/new">Lägg till ny bok</a>
+    <a class="btn btn-primary align-self-start" role="button" routerLink="book/new"><i
+            class="fa-regular fa-plus"></i>Lägg till ny bok</a>
 
     @if(book().length > 0){
     <p>{{book().length}} böcker hittades</p>
@@ -23,7 +24,7 @@
         </div>
         }
         } @else {
-        <p>Inga böcker hittades</p>
+        <p class="text-muted">Inga böcker hittades</p>
         }
     </div>
 

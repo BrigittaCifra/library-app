@@ -1,4 +1,4 @@
-<main class="container-fluid mt-3 mb-3 d-flex gap-4 flex-column">
+<main class="container-lg mt-5 mb-3 d-flex gap-4 flex-column">
     @if(loading()){
     <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
         <div class="spinner-border text-primary" role="status">
@@ -12,25 +12,29 @@
     <div class="modal d-block" tabindex="-1" style="background: rgba(0,0,0,0.5)">
         <div class="modal-dialog">
             <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()" class="modal-content">
+                <!--Modal header-->
                 <div class="modal-header">
                     <h2 class="modal-title">{{ newQuote() ? 'Ny citat' : 'Redigera citat' }}</h2>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
                         (click)="cleanUp()"></button>
                 </div>
-                <div class="modal-body d-flex flex-column gap-2">
+                <!--Modal innehåll-->
+                <div class="modal-body d-flex flex-column gap-4">
                     <div>
                         <label for=" content" class="form-label">Citat</label>
                         <textarea formControlName="content" class="form-control" aria-label="With textarea"
                             placeholder="Innehåll här..."></textarea>
                     </div>
                     <div>
-                        <label for="author" class="form-label">Författare</label>
+                        <label for="author" class="form-label"><i
+                                class="fa-regular fa-user text-secondary me-2"></i>Författare</label>
                         <input formControlName="author" type="text" class="form-control">
                     </div>
                 </div>
+                <!--Modal footer-->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-primary">{{ newQuote() ? 'Skapa' : 'Uppdatera' }}</button>
-                    <button (click)="cleanUp()" type="button" class="btn btn-secondary">Avbryt</button>
+                    <button type="button" class="btn btn-secondary" (click)="onReset()">Rensa</button>
                 </div>
             </form>
         </div>
@@ -38,7 +42,7 @@
     }
 
     <button (click)="showForm.set(true); newQuote.set(true)" type="button" class="btn btn-primary align-self-start">
-        Lägg till citat
+        <i class="fa-regular fa-plus"></i>Lägg till citat
     </button>
 
     @if(quote().length > 0){

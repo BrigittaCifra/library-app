@@ -10,8 +10,10 @@
     </figure>
 
     <div class="card-body d-flex gap-2">
-        <button (click)="onEdit.emit(quote)" type="button" class="btn btn-primary">Redigera</button>
-        <button (click)="quoteStore.deleteQuote(quote.id)" type="button" class="btn btn-secondary">Radera</button>
+        <button (click)="onEdit.emit(quote)" type="button" class="btn btn-primary"><i
+                class="fa-regular fa-pen-to-square me-2"></i>Redigera</button>
+        <button (click)="quoteStore.deleteQuote(quote.id)" type="button" class="btn btn-secondary"><i
+                class="fa-regular fa-trash-can me-2"></i>Radera</button>
     </div>
 
 </div>

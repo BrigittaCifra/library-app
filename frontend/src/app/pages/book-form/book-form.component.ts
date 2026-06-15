@@ -31,7 +31,7 @@ export class BookForm {
 
   // Access route parameters from snapshot
   id = parseInt(this.route.snapshot.params['id']);
-  pageTitle = signal("Lägg till bok");
+  pageTitle = signal("Lägg till ny bok");
 
   //ngOnInit körs exakt en gång efter att en komponent har skapats. Lite som useEffect med en tom dependency array
   ngOnInit() {
