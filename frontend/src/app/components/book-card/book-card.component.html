@@ -1,8 +1,11 @@
 <div class="card">
   <div class="card-header">{{ book.title }}</div>
   <ul class="list-group list-group-flush">
-    <li class="list-group-item">{{ book.author }}</li>
-    <li class="list-group-item">{{ book.publishedDate }}</li>
+    <li class="list-group-item"><i class="fa-regular fa-user text-secondary me-2"></i>{{ book.author }}</li>
+    <li class="list-group-item"><i class="fa-regular fa-calendar text-secondary me-2"></i>{{
+      book.publishedDate
+      }}
+    </li>
   </ul>
   <div class="card-body d-flex gap-2">
     <button (click)="onEdit()" type="button" class="btn btn-primary">Redigera</button>
