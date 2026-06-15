@@ -5,11 +5,11 @@
             <p>{{quote.content}}</p>
         </blockquote>
         <figcaption class="blockquote-footer">
-            Someone famous in <cite title="Source Title">Source Title</cite>
+            <cite title="Source Title">{{quote.author}}</cite>
         </figcaption>
     </figure>
 
-    <div class="card-body">
+    <div class="card-body d-flex gap-2">
         <button (click)="onEdit.emit(quote)" type="button" class="btn btn-primary">Redigera</button>
         <button (click)="quoteStore.deleteQuote(quote.id)" type="button" class="btn btn-secondary">Radera</button>
     </div>

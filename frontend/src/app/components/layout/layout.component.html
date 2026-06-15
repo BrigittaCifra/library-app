@@ -1,2 +1,5 @@
+<!--Visar bara naven om användaren är inloggad-->
+@if(authStore.isLoggedIn()){
 <app-nav />
+}
 <router-outlet />

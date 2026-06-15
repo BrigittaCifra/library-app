@@ -1,7 +1,12 @@
 <main class="container-fluid mt-3 mb-3 d-flex gap-4 flex-column">
     <!--Hanterar loading staten-->
     @if(loading()){
-    <p>Laddar . . .</p>
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Laddar...</span>
+        </div>
+    </div>
+
     } @else {
     <!-- Länk till formuläret -->
     <a class="btn btn-primary align-self-start" role="button" routerLink="book/new">Lägg till ny bok</a>

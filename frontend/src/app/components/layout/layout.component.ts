@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+
+import { AuthStore } from '../../stores/auth.store';
 
 //Komponenter
 import { NavbarComponent } from '../nav/nav.component';
@@ -10,4 +12,6 @@ import { NavbarComponent } from '../nav/nav.component';
   templateUrl: `./layout.component.html`,
   styles: ``,
 })
-export class LayoutComponent { }
+export class LayoutComponent {
+  authStore = inject(AuthStore);
+}

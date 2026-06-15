@@ -1,36 +1,49 @@
-@if(loading()){
-<p>Laddar . . .</p>
-}
+<main class="container-fluid mt-3 mb-3 d-flex gap-4 flex-column">
+    @if(loading()){
+    <div class="d-flex justify-content-center align-items-center" style="min-height: 50vh">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Laddar...</span>
+        </div>
+    </div>
+    }@else{
 
-<!--Det visas en formulär på sidan om användaren trycker på "lägg till citat"-->
-@if(showForm()){
-<form [formGroup]="quoteForm" (ngSubmit)="onSubmit()">
-    <input type="hidden" formControlName='id'>
-    <div>
-        <label for="content" class="form-label">{{ newQuote() ? 'Ny citat' : 'Redigera citat' }}</label>
-        <textarea formControlName="content" class="form-control" aria-label="With textarea"
-            placeholder="Innehåll här..."></textarea>
-    </div>
-    <div class="mb-3">
-        <label for="author" class="form-label">Författare</label>
-        <input formControlName="author" type="text" class="form-control">
-    </div>
-    <div>
-        <button type="submit" class="btn btn-primary">{{ newQuote() ? 'Skapa' : 'Uppdatera' }}</button>
-        <button (click)="cleanUp()" type="button" class="btn btn-secondary">Avbryt</button>
-    </div>
-</form>
-}@else {<button (click)="showForm.set(true); newQuote.set(true)" type="button" class="btn btn-primary">
-    Lägg till citat
-</button>}
+    <!--Det visas en formulär på sidan om användaren trycker på "lägg till citat"-->
+    @if(showForm()){
+    <form [formGroup]="quoteForm" (ngSubmit)="onSubmit()" class="d-flex flex-column gap-4">
+        <div>
+            <label for="content" class="form-label">{{ newQuote() ? 'Ny citat' : 'Redigera citat' }}</label>
+            <textarea formControlName="content" class="form-control" aria-label="With textarea"
+                placeholder="Innehåll här..."></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Författare</label>
+            <input formControlName="author" type="text" class="form-control">
+        </div>
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">{{ newQuote() ? 'Skapa' : 'Uppdatera' }}</button>
+            <button (click)="cleanUp()" type="button" class="btn btn-secondary">Avbryt</button>
+        </div>
+    </form>
+    }@else {<button (click)="showForm.set(true); newQuote.set(true)" type="button"
+        class="btn btn-primary align-self-start">
+        Lägg till citat
+    </button>}
 
-<div>
     @if(quote().length > 0){
-    @for (quote of quote(); track quote.id) {
-    <!-- citat komponent -->
-    <app-quote-card [quote]="quote" (onEdit)="onEdit($event)" />
+    <p>{{quote().length}} citat hittades</p>
     }
-    } @else {
-    <p>Inga citat hittades</p>
+
+    <div class="row gy-4">
+        @if(quote().length > 0){
+        @for (quote of quote(); track quote.id) {
+        <!-- citat komponent -->
+        <div class="col-12 col-sm-6 col-md-4">
+            <app-quote-card [quote]="quote" (onEdit)="onEdit($event)" />
+        </div>
+        }
+        } @else {
+        <p>Inga citat hittades</p>
+        }
+    </div>
     }
-</div>
+</main>
