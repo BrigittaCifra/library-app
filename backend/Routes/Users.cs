@@ -12,27 +12,8 @@ namespace backend.Routes;
 
 public static class UserEndpoints
 {
-    static int? GetUserId(ClaimsPrincipal user)
-    {
-        var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        return userId != null ? int.Parse(userId) : null;
-    }
     public static void MapUserEndpoints(this WebApplication app)
     {
-
-        // GET hämtar alla användare. Endast för att under utvecklingen lättare kunna se alla användare 
-        app.MapGet("/user", async (AppDbContext db) =>
-        {
-            try
-            {
-                var users = await db.Users.ToListAsync();
-                return Results.Ok(users); //200
-            }
-            catch (Exception ex)
-            {
-                return Results.Problem(ex.Message);
-            }
-        });
 
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book
@@ -88,8 +69,6 @@ public static class UserEndpoints
                 return Results.Problem(ex.Message);
             }
         });
-
-        //Bearer i header (login post)
 
     }
 }
