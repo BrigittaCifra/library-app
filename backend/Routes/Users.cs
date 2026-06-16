@@ -12,11 +12,6 @@ namespace backend.Routes;
 
 public static class UserEndpoints
 {
-    static int? GetUserId(ClaimsPrincipal user)
-    {
-        var userId = user.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-        return userId != null ? int.Parse(userId) : null;
-    }
     public static void MapUserEndpoints(this WebApplication app)
     {
 
