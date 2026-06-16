@@ -4,20 +4,46 @@ Bookly är en CRUD applikation som hjälper användare att hålla koll på sina 
 ## 📖 Beskrivning
 Bookly har CRUD funktionalitet via följande endpoints;
 
-Böcker:
+**Böcker**:
 - GET ``/book`` för att hämta alla böcker
 - GET ``/book/:id`` för att hämta en specifik bok
 - POST ``/book`` för att skapa en ny bok
 - PUT ``/book/:id`` för att uppdatera en befintlig bok
 - DELETE ``/book/:id`` för att ta bort en bok
 
-Citat:
+**Citat**:
 - GET ``/quote`` för att hämta alla citat
 - GET ``/quote/:id`` för att hämta ett specifikt citat
 - POST ``/quote`` för att skapa en ny citat
 - PUT ``/quote/:id`` för att uppdatera en befintlig citat
 - DELETE ``/quote/:id`` för att ta bort ett citat
 
-Användare:
+**Användare**:
 - POST ``/user/register`` för att skapa en ny användare
 - POST ``/user/login`` för att logga in på ett befintligt användarkonto 
+
+Själva databasen var modellerad utifrån följande antaganden:
+- Användare kan bara se och manipulera böcker och citat som tillhör sitt egna konto
+- Böcker och citat är två separata entiteter. En Citat är inte kopplat till en bok
+
+Nedan följer en bild över databas schemat:
+![alt text](image.png)
+
+## 🛠️ Använda tekniker
+**Backend**
+- .NET - Backend ramverk
+- Entity Framework - databas modelleringen och queries
+- C#
+
+**Frontend**
+- Angular - Frontend ramverk
+- TypeScript
+- HTML
+- BootStrap - CSS ramverk
+- Fontawesome - Ikonbibliotek
+
+**Övrigt**
+- Git - versionshantering
+
+## 📅 Projektperiod
+2026-06-02 - 2026-06-16
