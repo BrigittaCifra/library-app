@@ -100,6 +100,107 @@ Starta angular:
 ng serve --open
 ```
 
+Applikationens körs på http://localhost:4200/
+
+## Filstruktur
+Frontenden och Backenden blev separerade i olika mappar. Därför ser strukturen ut på följande sätt:
+```
+library-app/
+├── backend/
+│   ├── Data/
+│   │   ├── AppDbContext.cs
+│   │   └── image.png
+│   ├── DTOs/
+│   ├── Migrations/
+│   ├── Models/
+│   │   ├── Book.cs
+│   │   ├── Quote.cs
+│   │   └── User.cs
+│   ├── Properties/
+│   ├── Routes/
+│   │   ├── Books.cs
+│   │   ├── Quotes.cs
+│   │   └── Users.cs
+│   ├── Services/
+│   │   └── PasswordService.cs
+│   ├── .env.example
+│   ├── appsettings.Development.json
+│   ├── appsettings.json
+│   ├── backend.csproj
+│   ├── backend.http
+│   └── Program.cs
+├── frontend/
+│   ├── .vscode/
+│   ├── public/
+│   ├── src/
+│   │   ├── app/
+│   │   │   ├── components/
+│   │   │   │   ├── book-card/
+│   │   │   │   │   ├── book-card.component.html
+│   │   │   │   │   └── book-card.component.ts
+│   │   │   │   ├── layout/
+│   │   │   │   │   ├── layout.component.html
+│   │   │   │   │   └── layout.component.ts
+│   │   │   │   ├── nav/
+│   │   │   │   │   ├── nav.component.html
+│   │   │   │   │   └── nav.component.ts
+│   │   │   │   └── quote-card/
+│   │   │   │       ├── quote-card.html
+│   │   │   │       └── quote-card.ts
+│   │   │   ├── guards/
+│   │   │   │   └── auth.guard.ts
+│   │   │   ├── models/
+│   │   │   │   ├── auth-response.model.ts
+│   │   │   │   ├── book.model.ts
+│   │   │   │   ├── login.model.ts
+│   │   │   │   ├── quote.model.ts
+│   │   │   │   └── register.model.ts
+│   │   │   ├── pages/
+│   │   │   │   ├── auth-form/
+│   │   │   │   │   ├── auth-form.html
+│   │   │   │   │   └── auth-form.ts
+│   │   │   │   ├── book-form/
+│   │   │   │   │   ├── book-form.component.html
+│   │   │   │   │   └── book-form.component.ts
+│   │   │   │   ├── book-page/
+│   │   │   │   │   ├── book-page.html
+│   │   │   │   │   └── book-page.ts
+│   │   │   │   ├── login-page/
+│   │   │   │   │   ├── auth-form.html
+│   │   │   │   │   └── auth-form.ts
+│   │   │   │   ├── page-not-found/
+│   │   │   │   │   ├── page-not-found.html
+│   │   │   │   │   └── page-not-found.ts
+│   │   │   │   └── quote-page/
+│   │   │   │       ├── quote-page.html
+│   │   │   │       └── quote-page.ts
+│   │   │   ├── services/
+│   │   │   │   ├── auth.service.ts
+│   │   │   │   ├── book.service.ts
+│   │   │   │   └── quote.service.ts
+│   │   │   ├── stores/
+│   │   │   │   ├── auth.store.ts
+│   │   │   │   ├── book.store.ts
+│   │   │   │   └── quote.store.ts
+│   │   │   ├── app.config.ts
+│   │   │   ├── app.routes.ts
+│   │   │   └── app.ts
+│   │   ├── environments/
+│   │   │   ├── environment.development.ts
+│   │   │   └── environment.ts
+│   │   ├── index.html
+│   │   ├── main.ts
+│   │   └── styles.css
+│   ├── .gitignore
+│   ├── .prettierrc
+│   ├── angular.json
+│   ├── package-lock.json
+│   ├── package.json
+│   ├── tsconfig.app.json
+│   ├── tsconfig.json
+│   └── vercel.json
+├── .gitignore
+└── README.md
+```
 ## Projektperiod
 2026-06-02 - 2026-06-16
-
