@@ -1,9 +1,12 @@
 # Bookly
-Bookly är en CRUD applikation som hjälper användare att hålla koll på sina favorit böcker och citat. 
+Bookly är en fullstack CRUD-applikation byggd med Angular och .NET. 
+Applikationen låter användare hålla koll på sina favoritböcker och citat via ett personligt konto med JWT autentisering. 
 
 ## innehållsförteckning
 - [Beskrivning](#-Beskrivning)
 - [Använda tekniker](#️-använda-tekniker)
+- [Starta applikationen](#-starta-applikationen)
+- [Filstruktur](#Filstruktur)
 - [Projektperiod](#-Projektperiod)
 
 ## Beskrivning
@@ -12,7 +15,7 @@ Bookly har följande features;
 **Autentisering via JWT**:
 - Registrering
 - Inloggning
-- Utlogning
+- Utloggning
 
 **Böcker**
 - Hämtning av alla böcker som tillhör ett specifikt konto
@@ -37,10 +40,10 @@ Bookly har CRUD funktionalitet via följande endpoints;
 
 **Citat**:
 - GET ``/quote`` för att hämta alla citat
-- GET ``/quote/:id`` för att hämta ett specifikt citat
+- GET ``/quote/:id`` för att hämta en specifik citat
 - POST ``/quote`` för att skapa en ny citat
 - PUT ``/quote/:id`` för att uppdatera en befintlig citat
-- DELETE ``/quote/:id`` för att ta bort ett citat
+- DELETE ``/quote/:id`` för att ta bort en citat
 
 **Användare**:
 - POST ``/user/register`` för att skapa en ny användare
@@ -50,7 +53,7 @@ Själva databasen var modellerad utifrån följande antaganden:
 - Användare kan bara se och manipulera böcker och citat som tillhör sitt egna konto
 - Böcker och citat är två separata entiteter. En Citat är inte kopplat till en bok
 
-Nedan följer en bild över databas schemat:
+Nedan följer en bild över databas schemat.
 ![alt text](image.png)
 
 ## Använda tekniker
@@ -204,3 +207,15 @@ library-app/
 ```
 ## Projektperiod
 2026-06-02 - 2026-06-16
+
+## Skärmdumpar
+Nedan följer skärmdumpar från applikationen.
+
+Inloggning och registreringssidan:
+![alt text](image-1.png)
+
+Vy över alla böcker som tillhör ett användarkonto:
+![alt text](image-3.png)
+
+Vyn för att skapa en ny bok. Redigera funktionen använder samma formulär med en annan titel
+![alt text](image-2.png)
