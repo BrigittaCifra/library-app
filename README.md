@@ -8,6 +8,7 @@ Applikationen låter användare hålla koll på sina favoritböcker och citat vi
 - [Starta applikationen](#Starta-applikationen)
 - [Filstruktur](#Filstruktur)
 - [Projektperiod](#Projektperiod)
+- [Skärmdumpar](#Skärmdumpar)
 
 ## Beskrivning
 Bookly har följande features;
@@ -40,10 +41,10 @@ Bookly har CRUD funktionalitet via följande endpoints;
 
 **Citat**:
 - GET ``/quote`` för att hämta alla citat
-- GET ``/quote/:id`` för att hämta en specifik citat
-- POST ``/quote`` för att skapa en ny citat
-- PUT ``/quote/:id`` för att uppdatera en befintlig citat
-- DELETE ``/quote/:id`` för att ta bort en citat
+- GET ``/quote/:id`` för att hämta ett specifikt citat
+- POST ``/quote`` för att skapa ett ny citat
+- PUT ``/quote/:id`` för att uppdatera ett befintlig citat
+- DELETE ``/quote/:id`` för att ta bort ett citat
 
 **Användare**:
 - POST ``/user/register`` för att skapa en ny användare
@@ -51,7 +52,7 @@ Bookly har CRUD funktionalitet via följande endpoints;
 
 Själva databasen var modellerad utifrån följande antaganden:
 - Användare kan bara se och manipulera böcker och citat som tillhör sitt egna konto
-- Böcker och citat är två separata entiteter. En Citat är inte kopplat till en bok
+- Böcker och citat är två separata entiteter. Ett citat är inte kopplat till en bok
 
 Nedan följer en bild över databas schemat.
 ![alt text](image.png)
@@ -214,8 +215,20 @@ Nedan följer skärmdumpar från applikationen.
 Inloggning och registreringssidan:
 ![alt text](image-1.png)
 
-Vy över alla böcker som tillhör ett användarkonto:
+Vy över alla böcker som tillhör ett användarkonto.
 ![alt text](image-3.png)
 
-Vyn för att skapa en ny bok. Redigera funktionen använder samma formulär med en annan titel
+Vyn för att skapa en ny bok. Redigera funktionen använder samma formulär med en annan titel.
 ![alt text](image-2.png)
+
+över alla citat som tillhör ett användarkonto.
+![alt text](image-5.png)
+
+Vyn för att skapa ett ny citat. Redigera funktionen använder samma formulär med en annan titel.
+![alt text](image-4.png)
+
+404 sida för routes som inte existerar
+![alt text](image-6.png)
+
+Mobil vy
+![alt text](image-7.png)
