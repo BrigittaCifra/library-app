@@ -3,11 +3,11 @@ Bookly är en fullstack CRUD-applikation byggd med Angular och .NET.
 Applikationen låter användare hålla koll på sina favoritböcker och citat via ett personligt konto med JWT autentisering. 
 
 ## innehållsförteckning
-- [Beskrivning](#-Beskrivning)
-- [Använda tekniker](#️-använda-tekniker)
-- [Starta applikationen](#-starta-applikationen)
+- [Beskrivning](#Beskrivning)
+- [Använda tekniker](#️Använda-tekniker)
+- [Starta applikationen](#Starta-applikationen)
 - [Filstruktur](#Filstruktur)
-- [Projektperiod](#-Projektperiod)
+- [Projektperiod](#Projektperiod)
 
 ## Beskrivning
 Bookly har följande features;
