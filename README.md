@@ -55,7 +55,7 @@ Själva databasen var modellerad utifrån följande antaganden:
 - Böcker och citat är två separata entiteter. Ett citat är inte kopplat till en bok
 
 Nedan följer en bild över databas schemat.
-![alt text](image.png)
+![alt text](frontend/public/image.png)
 
 ## Använda tekniker
 **Backend**
@@ -213,22 +213,22 @@ library-app/
 Nedan följer skärmdumpar från applikationen.
 
 Inloggning och registreringssidan:
-![alt text](image-1.png)
+![alt text](frontend/public/image-1.png)
 
 Vy över alla böcker som tillhör ett användarkonto.
-![alt text](image-3.png)
+![alt text](frontend/public/image-3.png)
 
 Vyn för att skapa en ny bok. Redigera funktionen använder samma formulär med en annan titel.
-![alt text](image-2.png)
+![alt text](frontend/public/image-2.png)
 
 över alla citat som tillhör ett användarkonto.
-![alt text](image-5.png)
+![alt text](frontend/public/image-5.png)
 
 Vyn för att skapa ett ny citat. Redigera funktionen använder samma formulär med en annan titel.
-![alt text](image-4.png)
+![alt text](frontend/public/image-4.png)
 
 404 sida för routes som inte existerar
-![alt text](image-6.png)
+![alt text](frontend/public/image-6.png)
 
 Mobil vy\
-![alt text](image-7.png)
+![alt text](frontend/public/image-7.png)
