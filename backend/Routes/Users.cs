@@ -17,7 +17,7 @@ public static class UserEndpoints
 
         // POST skapar en användare
         // Mappar det inkommande JSON objektet till ett Book objekt genom Book book
-        app.MapPost("/user/register", async (AppDbContext db, RegisterRequest request) =>
+        app.MapPost("/user/register", async (AppDbContext db, RegisterRequest request, IConfiguration config) =>
         {
             try
             {
@@ -41,7 +41,10 @@ public static class UserEndpoints
                 //Lägger till användaren i databasen
                 db.Users.Add(user);
                 await db.SaveChangesAsync();
-                return Results.Created($"/user/{user.Id}", user); // 201
+
+                //AuthResponse modellen på frontenden förväntar sig ett token i responsen
+                var token = PasswordService.GenerateJwtToken(user, config);
+                return Results.Created($"/user/{user.Id}", new AuthResponse { Token = token, Username = user.Username, Email = user.Email }); // 201
             }
             catch (Exception ex)
             {
