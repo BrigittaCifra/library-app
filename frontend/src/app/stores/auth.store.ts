@@ -83,7 +83,7 @@ export class AuthStore {
             },
             error: (error) => {
                 //loggar ut felmeddelandet till konsolen
-                console.log(`Registreringen misslyckades ${error}`);
+                console.log(`Registreringen misslyckades: ${error.error}`);
                 this.setError(error);
             }
         });
@@ -106,7 +106,7 @@ export class AuthStore {
                 },
                 error: (error) => {
                     //loggar ut felmeddelandet till konsolen
-                    console.log(`Inloggningen misslyckades ${error}`);
+                    console.log(`Inloggningen misslyckades: ${error.error}`);
                     this.setError(error);
                 }
             });
