@@ -230,5 +230,5 @@ Vyn för att skapa ett ny citat. Redigera funktionen använder samma formulär m
 404 sida för routes som inte existerar
 ![alt text](image-6.png)
 
-Mobil vy
+Mobil vy\
 ![alt text](image-7.png)
