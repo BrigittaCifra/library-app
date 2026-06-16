@@ -1,7 +1,31 @@
 # Bookly
 Bookly är en CRUD applikation som hjälper användare att hålla koll på sina favorit böcker och citat. 
 
+## innehållsförteckning
+- [Beskrivning](#-Beskrivning)
+- [Använda tekniker](#️-använda-tekniker)
+- [Projektperiod](#-Projektperiod)
+
 ## 📖 Beskrivning
+Bookly har följande features;
+
+**Autentisering via JWT**:
+- Registrering
+- Inloggning
+- Utlogning
+
+**Böcker**
+- Hämtning av alla böcker som tillhör ett specifikt konto
+- Skapa böcker för ett konto
+- Uppdatera böcker för ett konto
+- Radera böcker för ett konto
+
+**Citat**
+- Hämtning av alla citat som tillhör ett specifikt konto
+- Skapa citat för ett konto
+- Uppdatera citat för ett konto
+- Radera citat för ett konto
+
 Bookly har CRUD funktionalitet via följande endpoints;
 
 **Böcker**:
@@ -47,3 +71,4 @@ Nedan följer en bild över databas schemat:
 
 ## 📅 Projektperiod
 2026-06-02 - 2026-06-16
+
