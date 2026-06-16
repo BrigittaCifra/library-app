@@ -6,7 +6,7 @@ Bookly är en CRUD applikation som hjälper användare att hålla koll på sina 
 - [Använda tekniker](#️-använda-tekniker)
 - [Projektperiod](#-Projektperiod)
 
-## 📖 Beskrivning
+## Beskrivning
 Bookly har följande features;
 
 **Autentisering via JWT**:
@@ -53,7 +53,7 @@ Själva databasen var modellerad utifrån följande antaganden:
 Nedan följer en bild över databas schemat:
 ![alt text](image.png)
 
-## 🛠️ Använda tekniker
+## Använda tekniker
 **Backend**
 - .NET - Backend ramverk
 - Entity Framework - databas modelleringen och queries
@@ -69,6 +69,37 @@ Nedan följer en bild över databas schemat:
 **Övrigt**
 - Git - versionshantering
 
-## 📅 Projektperiod
+## Starta applikationen
+
+**Backend**:
+
+Navigera in i backend mappen:
+```bash
+cd backend
+```
+
+Starta .Net:
+```bash
+dotnet run
+```
+
+**Frontend**:
+
+Navigera in i frontend mappen:
+```bash
+cd frontend
+```
+
+Installera beroenden:
+```bash
+npm install
+```
+
+Starta angular:
+```bash
+ng serve --open
+```
+
+## Projektperiod
 2026-06-02 - 2026-06-16
 
