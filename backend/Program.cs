@@ -69,7 +69,7 @@ builder.Services.AddCors(options =>
                       policy =>
                       {
                           policy
-                          .WithOrigins("http://example.com", "http://localhost:4200")
+                          .WithOrigins("https://bookly-seven-drab.vercel.app", "http://localhost:4200")
                           .AllowAnyHeader()
                           .WithMethods("PUT", "DELETE", "GET", "POST");
                       });
@@ -77,6 +77,13 @@ builder.Services.AddCors(options =>
 
 //Builds the configured WebApplication instance
 var app = builder.Build();
+
+//Köra eventuella nya migrationer automatiskt vid uppstart
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.Migrate();
+}
 
 //Middleware för autentisering och auktorisering
 //Kollar om användaren har en giltig token. Läser token och skapar ClaimsPrincipal
